@@ -1,0 +1,33 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+}
+  
+.pagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+}
+  
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.pagination button {
+    color: black;
+    background-color: #4caf50;
+    border-color: #6cb36e;
+    padding: 8px 15px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+  
+.pagination button:hover:not(.active) {
+    background-color: #6cb36e;
+    border-color: #4caf50;
+}
+  

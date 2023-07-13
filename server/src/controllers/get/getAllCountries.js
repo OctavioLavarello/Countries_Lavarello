@@ -1,13 +1,12 @@
-const axios = require("axios")
+const { Country } = require("../../db.js")
 
 const getAllCountries = async () => {
     try {
-        const response = await axios.get("http://localhost:5000/countries");
-        const data = response.data
-        if (!data || data.length === 0){
-            throw new Error ("There aren't countries")
+        const countriesList = await Country.findAll()
+        if (!countriesList || countriesList.length === 0){
+            throw new Error ("There are no countries")
         };
-        return data;
+        return countriesList;
     } catch (error) {
         throw error.message;
     }  

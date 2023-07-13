@@ -1,18 +1,23 @@
-const axios = require("axios");
+const { Country } = require("../../db")
 
 const getNameCountry = async (common) => {
     try {
-        const response = await axios.get("http://localhost:5000/countries");
-        const data = response.data;
-        if (!data || data.length === 0){
-            throw new Error ("There aren't countries")
+        const countriesList = await Country.findAll();
+        if (!countriesList || countriesList.length === 0){
+            throw new Error ("There are no countries")
         };
-        const commonName = data.filter((country) => {
-            if (country.name && country.name.common && country.name.common.toLowerCase().includes(common.toLowerCase())){
-              return true;
+        const commonName = countriesList.filter((country) => {
+            if (
+                country.commonName && country.commonName.toLowerCase().includes(common.toLowerCase()) ||
+                country.officialName && country.officialName.toLowerCase().includes(common.toLowerCase())
+            ){
+                return true;
             }
             return false;
         });
+        if (!commonName || commonName.length === 0) {
+            throw new Error("That country doesn't exist");
+        };
         return commonName;
     } catch (error) {
         throw (error.message);

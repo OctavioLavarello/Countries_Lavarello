@@ -1,0 +1,41 @@
+
+.form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.formGroup {
+    margin-bottom: 10px;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 5px;
+}
+
+.validationMessage {
+    color: rgb(255, 21, 21);
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.submitButton {
+    background-color: #4caf50;
+    border-color: #6cb36e;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;;
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+}
+.submitButton:hover {
+    background-color: #6cb36e;
+    border-color: #4caf50;
+    box-shadow: 0 3px 3px 0 #000000,0 3px 3px 0 #000000;
+}

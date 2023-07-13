@@ -1,17 +1,15 @@
-const axios = require("axios")
+const { Country, Activity } = require("../../db")
 
 const getCountry = async (idCountry) => {
     try {
-        const response = await axios.get(`http://localhost:5000/countries`);
-        const data = response.data;
-        if (!data || data.length === 0){
-            throw new Error ("There aren't countries")
-        };
-        const country = data.find((country) => country.tld.includes(idCountry));
+        const country = await Country.findOne({
+            where: { ID: idCountry },
+            include: [Activity],
+        });
         if (!country){
             throw new Error ("country not found")
-        }
-        return country
+        };
+        return country;
     } catch (error) {
         throw (error.message);
     }  
