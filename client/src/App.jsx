@@ -1,21 +1,31 @@
 /// IMPORTS 
 import './App.css';
-import { useState } from 'react';
-import { Routes, Route, useLocation } from "react-router-dom";
+import { useEffect,  } from 'react';
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 // PAGES
 import Error from "./pages/error/Error.jsx";
 import LandingPage from "./pages/landingPage/LandingPage.jsx";
 import HomePage from "./pages/homePage/HomePage.jsx";
-import AboutUsPage from "./pages/aboutUsPage/AboutUsPage.jsx";
 import FormActivity from "./pages/formActivity/FormActivity.jsx";
 import DetailPage from "./pages/detailPage/DetailPage.jsx";
 // COMPONENTS
 import Nav from "./components/nav/Nav.jsx"
 
+// APP
 function App() {
-  const [access, setAccess] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
+  const { access } = useSelector(state => state)
+  // LOGIN
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
 
+  function loginNavigate () {
+    navigate("home")
+  }
+  //RETURN
   return (
     <div>
       <div>
@@ -24,9 +34,8 @@ function App() {
         <Nav/>}
       </div>
       <Routes>
-        <Route path="/" element={<LandingPage />}/>
+        <Route path="/" element={<LandingPage loginNavigate={loginNavigate}/>}/>
         <Route path="/home" element={<HomePage />}/>
-        <Route path="/about" element={<AboutUsPage />}/>
         <Route path="/activities" element={<FormActivity />}/>
         <Route path="/detail/:id" element={<DetailPage />}/>
         <Route path="*" element={<Error />}/>

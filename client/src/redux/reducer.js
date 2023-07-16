@@ -2,8 +2,12 @@
 // ACTION-TYPES
 import { 
     GET_ALL_COUNTRIES, 
+    GET_ALL_USERS,
     GET_COUNTRY_BY_NAME, 
-    GET_COUNTRY_ACTIVITY,
+    GET_COUNTRY_ACTIVITY_NAME,
+    GET_COUNTRY_ACTIVITY_DIFFICULTY,
+    GET_COUNTRY_ACTIVITY_DURATION,
+    GET_COUNTRY_ACTIVITY_SEASON,
     FILTER_CONTINENT,
     FILTER_ACTIVITY_SEASON,
     FILTER_ACTIVITY_DIFFICULTY,
@@ -13,16 +17,19 @@ import {
     LOGIN,
     LOGOUT,
     REGISTER,
+    POST_ACTIVITY,
+    GET_ALL_ACTIVITIES,
     CLEAR_STATE,
     ERROR,
-    GET_ALL_ACTIVITIES,
-    POST_ACTIVITY,
-    RESET_CONTINET
+    RESET_CONTINET,
+    GET_COUNTRY_BY_ID,
 } from "./actions/action-types";
 // REDUCER MD
 import { getAllCountries } from "./reducerMd/getAllCountries.js";
+import { getAllUsers } from "./reducerMd/getAllUsers"
+import { getCountryByID } from "./reducerMd/getCountryByID.js";
 import { getCountryByName } from "./reducerMd/getCountryByNameMd.js";
-import { getCountryActivity } from "./reducerMd/getCountryActivity.js";
+import { getCountryActivity_Name, getCountryActivity_Difficulty, getCountryActivity_Duration, getCountryActivity_Season } from "./reducerMd/getCountryActivity.js";
 import { filterContinent } from "./reducerMd/filterContinent.js";
 import { filterActivity_Season } from "./reducerMd/filterActivity_Season.js";
 import { filterActivity_Difficulty } from "./reducerMd/filterActivity_Difficulty";
@@ -42,8 +49,10 @@ const initialState = {
     auxCountries: [],
     searchCountries: [],
     auxSearchCountries: [],
+    countryByID: [],
     continents: [],
     activities: [],
+    users: [],
     access: false,
     error: null,
 };
@@ -51,11 +60,21 @@ const initialState = {
 export default function reducer (state = initialState, action) {
     switch(action.type){
         case GET_ALL_COUNTRIES:
-            return getAllCountries(state, action); 
+            return getAllCountries(state, action);
+        case GET_ALL_USERS:
+            return getAllUsers(state, action);
+        case GET_COUNTRY_BY_ID:
+            return getCountryByID(state, action)
         case GET_COUNTRY_BY_NAME:
             return getCountryByName(state, action); 
-        case GET_COUNTRY_ACTIVITY:
-            return getCountryActivity(state, action); 
+        case GET_COUNTRY_ACTIVITY_NAME:
+            return getCountryActivity_Name(state, action); 
+        case GET_COUNTRY_ACTIVITY_DIFFICULTY:
+            return getCountryActivity_Difficulty(state, action); 
+        case GET_COUNTRY_ACTIVITY_DURATION:
+            return getCountryActivity_Duration(state, action); 
+        case GET_COUNTRY_ACTIVITY_SEASON:
+            return getCountryActivity_Season(state, action); 
         case FILTER_CONTINENT:
             return filterContinent(state, action);
         case FILTER_ACTIVITY_SEASON:
@@ -71,9 +90,9 @@ export default function reducer (state = initialState, action) {
         case RESET_CONTINET:
             return resetContinent(state);
         case LOGIN:
-            return login(state, action) 
+            return login(state) 
         case LOGOUT:
-            return logout(state, action) 
+            return logout(state) 
         case REGISTER:
             return register(state, action) 
         case GET_ALL_ACTIVITIES:

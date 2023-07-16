@@ -14,7 +14,7 @@ export default function Pagination (props) {
   
   return ( 
     <nav className={style.nav}>
-      <ul className={`${style.pagination} ${style.pagContainer}`}>
+      <ul className={style.pagination}>
         {pageNumbers.map((number) => (
           <dl key={number} className={number === currentPage ? style.active : ""}>
             <button onClick={() => paginate(number)}>{number}</button>

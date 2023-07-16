@@ -1,2 +1,6 @@
-export const logout = (state, { payload }) => {
+export const logout = (state) => {
+    return {
+        ...state,
+        access: false
+    }
 }

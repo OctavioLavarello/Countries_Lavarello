@@ -11,11 +11,13 @@ export default function Card (props) {
     return (
         <div className={style.div}>
             <NavLink className={style.border} to={`/detail/${ID}` }>
-                <img src={image} alt={commonName}/>
                 <div className={style.div2}>
-                <h2 className={style.h2}>{officialName}</h2> 
-                <h2 className={style.h2}>{commonName}</h2>
-                <h2 className={style.h2}>{continent}</h2>
+                    <img className={style.img} src={image} alt={commonName}/>
+                </div>
+                <div className={style.div2}>
+                    <h3 className={style.h3}>{officialName}</h3> 
+                    <h3 className={style.h3}>{commonName}</h3>
+                    <h3 className={style.h3}>{continent}</h3>
                 </div>
             </NavLink>
         </div>

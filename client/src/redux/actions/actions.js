@@ -1,7 +1,12 @@
 import { 
     GET_ALL_COUNTRIES, 
+    GET_ALL_USERS,
+    GET_COUNTRY_BY_ID,
     GET_COUNTRY_BY_NAME, 
-    GET_COUNTRY_ACTIVITY,
+    GET_COUNTRY_ACTIVITY_NAME,
+    GET_COUNTRY_ACTIVITY_DIFFICULTY,
+    GET_COUNTRY_ACTIVITY_DURATION,
+    GET_COUNTRY_ACTIVITY_SEASON,
     FILTER_CONTINENT,
     FILTER_ACTIVITY_SEASON,
     FILTER_ACTIVITY_DIFFICULTY,
@@ -33,10 +38,48 @@ export const getAllCountries = () => {
             return dispatch({
                 type: ERROR,
                 payload: error.message,
-            })
-        }
-    }
-}
+            });
+        };
+    };
+};
+
+export const getAllUsers = () => {
+    const endpoint = '/user';
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(endpoint)
+            const { data }  = response;
+            return dispatch({
+                type: GET_ALL_USERS,
+                payload: data,
+            });
+        } catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error.message,
+            });
+        };
+    };
+};
+
+export const getCountryByID = (countryID) => {
+    const endpoint = '/countries/';
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`${endpoint}${countryID}`)
+            const { data } = response;
+            return dispatch({
+                type: GET_COUNTRY_BY_ID,
+                payload: data,
+            });
+        } catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error.message,
+            });
+        };
+    };
+};
 
 export const getCountryByName = (name) => {
     const endpoint = '/countries/name?common=';
@@ -57,13 +100,30 @@ export const getCountryByName = (name) => {
     };
 };
 
-export const getCountryActivity = (activityName) => {
+export const getCountryActivity_Name = (activityOption) => {
     return {
-        type: GET_COUNTRY_ACTIVITY,
-        payload: activityName,
-    }
+        type: GET_COUNTRY_ACTIVITY_NAME,
+        payload: activityOption
+    };
 };
-
+export const getCountryActivity_Difficulty = (activityOption) => {
+    return {
+        type: GET_COUNTRY_ACTIVITY_DIFFICULTY,
+        payload: activityOption
+    };
+};
+export const getCountryActivity_Duration = (activityOption) => {
+    return {
+        type: GET_COUNTRY_ACTIVITY_DURATION,
+        payload: activityOption
+    };
+};
+export const getCountryActivity_Season = (activityOption) => {
+    return {
+        type: GET_COUNTRY_ACTIVITY_SEASON,
+        payload: activityOption
+    };
+};
 
 export const filterContinent = (continent) => {
     return {
@@ -113,9 +173,28 @@ export const resetContinet = () => {
 };
 
 export const login = (userData) => {
-    return {
-        type: LOGIN,
-        payload: userData
+    return async (dispatch, getState) => {
+        try {
+            const state = getState();
+            const existingUser = state.users.find((user) =>
+                    user.name === userData.name &&
+                    user.email === userData.email &&
+                    user.password === userData.password
+            );
+            if (!existingUser) {
+                window.alert("This user does not exist")
+                return;
+            } 
+            return dispatch({
+                type: LOGIN,
+            });
+        }
+        catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error.message,
+            });
+        };
     };
 };
 
@@ -126,9 +205,27 @@ export const logout = () => {
 };
 
 export const register = (userData) => {
-    return {
-        type: REGISTER,
-        payload: userData
+    const endpoint = '/user';
+    return async (dispatch, getState) => {
+        try {
+            const state = getState();
+            const existingUser = state.users.find((user) => user.name === userData.name)
+            const existingUserEmail = state.users.find((user) => user.email === userData.email)
+            if (existingUser || existingUserEmail) {
+                window.alert("That user already exists")
+                return;
+            }
+            await axios.post(endpoint, userData)
+            return dispatch({
+                type: REGISTER,
+                payload: userData,
+            });
+        } catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error.message,
+            });
+        };
     };
 };
 

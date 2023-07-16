@@ -17,7 +17,7 @@ export default function FormActivity() {
         dispatch(getAllCountries())
     }, []);
     // GLOBAL STATE
-    const { allCountries, activities } = useSelector(state => state)
+    const { allCountries } = useSelector(state => state)
     // UTIL ORDER A-Z
     const orderCountries = allCountries ? allCountries.slice() : []
     const order = orderCountries ? orderCountries.sort((a,b) => a.commonName > b.commonName ? 1 : -1) : []
@@ -144,7 +144,7 @@ export default function FormActivity() {
                     errors.name 
                     }
                     >SUBMIT</button>
-                    {errors.message && <p className={style.validationMessage}>{errors.message}</p>}
+                    {errors.message && <p className={style.validationMessageSend}>{errors.message}</p>}
             </form>
         </div>
     )

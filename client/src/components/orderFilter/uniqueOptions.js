@@ -27,13 +27,6 @@ function uniqueOptions (activities, option) {
         }
         return uniqueArr;
     }, []);
-    const activitiesCountry = activities.reduce((uniqueArr, activity) => {
-        const index = uniqueArr.findIndex(a => a.season === activity.season);
-        if (index === -1) {
-            uniqueArr.push(activity);
-        }
-        return uniqueArr;
-    }, []);
     if (option === "Name"){
         return activitiesNames
     }
@@ -45,9 +38,6 @@ function uniqueOptions (activities, option) {
     }
     if (option === "Season"){
         return activitiesSeason
-    }
-    if (option === "Country"){
-        return activitiesCountry
     }
 }
 

@@ -1,33 +1,67 @@
 .nav {
     display: flex;
     flex-direction: column;
-}
-  
-.pagContainer {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 2px;
+    align-items: center;
+    height: 20px;
+    width: 100%;
 }
   
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20px;
+    width: 100%;
 }
   
 .pagination button {
-    color: black;
-    background-color: #4caf50;
-    border-color: #6cb36e;
-    padding: 8px 15px;
+    color: #fcfdef;
+    background-color: #00193f;
+    border-color: #fcfdef;
+    border-radius: 10%;
     text-decoration: none;
-    transition: background-color 0.3s;
     cursor: pointer;
+    padding: 5px 15px;
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
 }
   
-.pagination button:hover:not(.active) {
-    background-color: #6cb36e;
-    border-color: #4caf50;
+.pagination button:hover {
+    background-color: #00193f;
+    border-color: #fcfdef;
+    box-shadow: 0 -3px 3px 0 #fcfdef,0 -3px 3px 0 #fcfdef;
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
 }
-  
+.active {
+    color: #fcfdef;
+    border-color: #fcfdef;
+    border-radius: 10%;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+}
+.active button {
+    color: #00193f;
+    background-color: #fcfdef;
+    border-color: #00193f;
+    box-shadow: 0 -3px 3px 0 #fcfdef,0 -3px 3px 0 #fcfdef;
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+}
+.active button:hover {
+    color: #00193f;
+    background-color: #fcfdef;
+    border-color: #00193f;
+    box-shadow: 0 -3px 3px 0 #fcfdef,0 -3px 3px 0 #fcfdef;
+    transform: translateY(-5px);
+    -webkit-transform: translateY(-5px);
+    -moz-transform: translateY(-5px);
+}

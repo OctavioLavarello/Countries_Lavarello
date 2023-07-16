@@ -1,6 +1,7 @@
 export const reset = (state) => {
     return {
         ...state,
-        allCountries: state.auxCountries
+        allCountries: state.auxCountries,
+        searchCountries: state.auxSearchCountries
     }
 }

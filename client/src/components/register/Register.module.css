@@ -1,0 +1,73 @@
+.form {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.formGroup {
+    margin-bottom: 10px;
+}
+
+.label {
+    display: block;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    padding: 5px;
+}
+
+.validationMessage {
+    color: rgb(255, 21, 21);
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.validationMessageSend {
+    color: rgb(21, 255, 40);
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.submitButton {
+    position: relative;
+    background-color: #00193f;
+    color: #fcfdef;
+    border: 1px solid #fcfdef;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.submitButton::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg, #fcfdef, #00193f, #ff8e0e,
+        #fcfdef, #00193f, #ff8e0e
+    );
+    background-size: 1000%;
+    border-radius: 10px;
+    filter: blur(8px);
+    opacity: 0;
+}
+.submitButton:hover::before {
+    opacity: 1; 
+    animation: glowing 10s linear infinite;
+}
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}

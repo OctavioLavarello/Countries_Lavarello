@@ -1,25 +1,32 @@
 const { Router } = require("express");
 const router = Router();
 
-// IMPORTACIONES GET
+// GET IMPORTS 
 const { handlerAllCountries } = require("../handlers/get/handlerAllCountries.js");
+const { handlerAllUsers } = require("../handlers/get/handlerAllUsers.js");
 const { handlerGetActivities } = require("../handlers/get/handlerGetActivities.js");
 const { handlerGetLogin } = require("../handlers/get/handlerGetLogin.js")
 const { handlerNameCountry } = require("../handlers/get/handlerNameCountry.js");
 const { handlerCountry } = require("../handlers/get/handlerCountry.js");
-// IMPORTACIONES POST
+// POST IMPORTS 
 const { handlerPostActivities } = require("../handlers/post/handlerPostActivities.js");
 const { handlerPostUser } = require("../handlers/post/handlerPostUser.js");
+// DELETE IMPORTS
+const { handlerDeleteActivity } = require("../handlers/delete/handlerDeleteActivity.js")
+const { handlerDeleteUser } = require("../handlers/delete/handlerDeleteUser.js")
 
-// RUTAS GET
-router.get("/countries", handlerAllCountries); //X//
-router.get("/activities", handlerGetActivities); //X// Faltan que tenga datos la tabla de activities
-router.get("/login?", handlerGetLogin) //X//
-router.get("/countries/name?", handlerNameCountry); //X//
-router.get("/countries/:idCountry", handlerCountry); //X//
-
-// RUTAS POST
-router.post("/activities", handlerPostActivities); //X// Faltan que tenga datos la tabla de countries 
-router.post("/user", handlerPostUser); //X//
+// GET ROUTES
+router.get("/countries", handlerAllCountries);
+router.get("/user", handlerAllUsers);
+router.get("/activities", handlerGetActivities); 
+router.get("/login?", handlerGetLogin);
+router.get("/countries/name?", handlerNameCountry);
+router.get("/countries/:idCountry", handlerCountry);
+// POST ROUTES
+router.post("/activities", handlerPostActivities);
+router.post("/user", handlerPostUser);
+// DELETE ROUTES
+router.delete("/Activities/:idActivity", handlerDeleteActivity)
+router.delete("/user/:idUser", handlerDeleteUser)
 
 module.exports = router;
