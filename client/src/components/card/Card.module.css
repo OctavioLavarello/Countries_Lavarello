@@ -1,8 +1,8 @@
 .border{
-    background-image: linear-gradient(to bottom, rgb(165, 165, 165), rgb(128, 128, 128));
+    background-image: linear-gradient(to bottom, rgb(165, 165, 165), #00193f);
     border: 2px solid #fcfdef;
     width: 100%; 
-    height: 260px;
+    height: 300px;
     border-radius: 10%;
     overflow: hidden;
     display: flex;
@@ -40,12 +40,23 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 0;
+    color:#fcfdef;
+    height: 140px;
+}
+.div3 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 0;
+    color:#fcfdef;
+    height: 100%;
 }
   
-  .div2 h3:not(:first-child) {
-    margin-top: 2px;
+.div3 h3{
+    margin-top: 0;
     white-space: break-word;
+    display: table;
 }

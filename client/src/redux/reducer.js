@@ -23,6 +23,7 @@ import {
     ERROR,
     RESET_CONTINET,
     GET_COUNTRY_BY_ID,
+    ACCESS,
 } from "./actions/action-types";
 // REDUCER MD
 import { getAllCountries } from "./reducerMd/getAllCountries.js";
@@ -43,6 +44,7 @@ import { getAllActivities } from "./reducerMd/getAllActivities.js";
 import { clearState } from "./reducerMd/clearState.js";
 import { error } from "./reducerMd/error.js";
 import { resetContinent } from "./reducerMd/resetContinent.js"
+import { access } from "./reducerMd/access.js"
 // INITIAL STATE
 const initialState = {
     allCountries: [],
@@ -101,6 +103,8 @@ export default function reducer (state = initialState, action) {
             return clearState (state) 
         case ERROR:
             return error (state, action) 
+        case ACCESS:
+            return access (state, action) 
         default:
             return {...state}
     }

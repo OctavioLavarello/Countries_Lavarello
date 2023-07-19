@@ -56,10 +56,12 @@ export default function Login(props) {
     // RETURN
     return(
         <div className={style.div}>
-            <h2>Already have a account?</h2>
+            <h3>Already have a account?</h3>
             <form onSubmit={handlerOnSubmit} className={style.horizontalForm}>
                 <div>
-                    <label htmlFor="nickname">NICKNAME</label>
+                    <label htmlFor="nickname"
+                    className={style.horizontalLabel}
+                    >NICKNAME</label>
                     <input 
                     name="name"
                     type="name" 
@@ -70,7 +72,9 @@ export default function Login(props) {
                     {errors.name && <p className={style.validationMessage}>{errors.name}</p>}
                 </div>
                 <div>
-                    <label htmlFor="email">EMAIL</label>
+                    <label htmlFor="email"
+                    className={style.horizontalLabel}
+                    >EMAIL</label>
                     <input 
                     name="email"
                     type="email" 
@@ -81,7 +85,9 @@ export default function Login(props) {
                     {errors.email && <p className={style.validationMessage}>{errors.email}</p>}
                 </div>
                 <div>
-                    <label htmlFor="password">PASSWORD</label>
+                    <label htmlFor="password"
+                    className={style.horizontalLabel}
+                    >PASSWORD</label>
                     <input 
                     name="password"
                     type="text" 
@@ -100,7 +106,7 @@ export default function Login(props) {
                     errors.email ||
                     errors.password
                     }
-                    >Log In</button>
+                    >Login</button>
                     {errors.message && <p className={style.validationMessageSend}>{errors.message}</p>}
             </form>
         </div>

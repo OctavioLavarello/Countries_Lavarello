@@ -21,6 +21,8 @@ import {
     CLEAR_STATE,
     ERROR,
     RESET_CONTINET,
+    ACCESS,
+    DELETE_ACTIVITY
 } from "./action-types";
 import axios from "axios";
 
@@ -276,4 +278,26 @@ export const getAllActivities = () => {
             })
         }
     }
+}
+export const accessTrue = () => {
+    return {
+        type: ACCESS
+    }
+}
+
+export const deleteActivity = (id) => {
+    const endpoint = '/Activities/';
+    return async (dispatch ) => {
+        try {
+            await axios.delete(`${endpoint}${id}`)
+            return dispatch({
+                type: DELETE_ACTIVITY,
+            });
+        } catch (error) {
+            return dispatch({
+                type: ERROR,
+                payload: error.message,
+            });
+        };
+    };
 }

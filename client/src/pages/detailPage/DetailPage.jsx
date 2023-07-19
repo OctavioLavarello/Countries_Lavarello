@@ -24,22 +24,25 @@ export default function DetailPage () {
     // RETURN
     return (
         <div className={style.div}>
-            <div>
+            <div className={style.divInfo}>
                 <h2>Country Information</h2>
-                <h3 className={style.h2}>Continent | {continent}</h3>
-                <h3 className={style.h2}>Subregion | {subregion}</h3>
-                <h3 className={style.h2}>Population | {population}</h3>
-                <h3 className={style.h2}>Area | {area} km²</h3>
+                <h3>Continent | {continent}</h3>
+                <h3>Subregion | {subregion}</h3>
+                <h3>Population | {population} residents</h3>
+                <h3>Area | {area} km²</h3>
             </div>
-            <div className={style.div2}>
-                <h3 className={style.h2}>{officialName}</h3> 
-                <h3 className={style.h2}>{commonName}</h3>
+            <div className={style.divFlag}>
+                <h3>{officialName}</h3> 
+                <h3>{commonName}</h3>
                 <img src={image} alt={commonName}/>
             </div>
-                <h2>Activities</h2>
+            <div className={style.divActivities}>
+                <div className={style.divActivitiesSmall}>
+                    <h2>Activities:</h2>
+                </div>
                 {Array.isArray(Activities) && Activities.map((activity) => (
-                    <div>
-                        <h2>{activity.name.toUpperCase()}</h2>
+                    <div className={style.divActivitiesdiv}>
+                        <h3 className={style.upper}>{activity.name}</h3>
                         <h3>Difficulty | Lvl {activity.difficulty}</h3>
                         <h3>Duration | {activity.duration.startsWith('00:') ?
                             `${activity.duration} minutes` :
@@ -48,8 +51,6 @@ export default function DetailPage () {
                         <h3>Season | {activity.season}</h3>
                     </div>
                 ))}
-            <div>
-
             </div>
         </div>
     )

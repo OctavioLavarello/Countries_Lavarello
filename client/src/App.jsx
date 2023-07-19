@@ -17,13 +17,18 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const { access } = useSelector(state => state)
+  // LOGIN UTIL FOR ROUTES
+  const AllowedRoutes = ['/', '/home', '/activities', '/detail:id'];
   // LOGIN
   useEffect(() => {
-    !access && navigate('/');
-  }, [access]);
+    const isAllowedRoute = AllowedRoutes.includes(location.pathname);
+    if (!access && isAllowedRoute && location.pathname !== '/') {
+      navigate('/');
+    }
+  }, [access, location, navigate, AllowedRoutes]);
 
   function loginNavigate () {
-    navigate("home")
+    navigate("/home")
   }
   //RETURN
   return (

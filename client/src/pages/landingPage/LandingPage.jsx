@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import Login from "../../components/login/Login.jsx";
 import Register from "../../components/register/Register.jsx";
 // ACTIONS 
-import { getAllUsers } from "../../redux/actions/actions.js";
+import { getAllUsers, accessTrue } from "../../redux/actions/actions.js";
 // STYLES
 import style from "./LandingPage.module.css";
 
@@ -17,19 +17,29 @@ export default function LandingPage(props) {
         dispatch(getAllUsers())
     }, []);
 
+    const handlerLetsGo = () => {
+        dispatch(accessTrue())
+        loginNavigate()
+    }
+
     return (
         <div>
             <div className={style.div}>
-                <h2>Countries Search PI</h2>
-                <Login loginNavigate={loginNavigate}/>
+                <div className={style.countries}>
+                    <h2>Countries Search PI</h2>
+                </div>
+                <div className={style.login}>
+                    <Login loginNavigate={loginNavigate}/>
+                </div>
             </div>
             <div className={style.bigDiv}>
-                <div className={style.div2}>
-                    <NavLink to="/home">
-                        <button>Home</button>
-                    </NavLink>
+                <div className={style.divTextStart}>
+                    <button 
+                    onClick={handlerLetsGo} 
+                    className={style.letsGo}
+                    >Lets Go...</button>
                 </div>
-                <div className={style.div2}>
+                <div className={style.divRegister}>
                     <Register />
                 </div>
             </div>

@@ -1,21 +1,62 @@
 .div {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.div h3 {
+    margin-bottom: 0;
+    margin-right: 15px;
+}
+.validationMessage {
+    color: rgb(255, 21, 21);
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
+    height: 5px;
+    margin-top: 0;
+}
+.validationMessageSend {
+    color: rgb(21, 255, 40);
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 0;
 }
 .horizontalForm {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    height: 40px;
+}
+.horizontalForm div {
+    align-items: center;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 10px;
+    width: 180px;
 }
 
-.horizontalForm label {
-    flex-basis: 20%;
+.horizontalLabel {
     text-align: right;
-    margin-right: 5px;
-    margin-left: 20px;
+    margin-top: 0;
+    margin-right: 10px;
 }
 
 .horizontalForm button {
-    width: 70px;
-    height: 20px;
+    position: relative;
+    background-color: #00193f;
+    color: #fcfdef;
+    border: 1px solid #fcfdef;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.horizontalForm button:hover{
+    border-color: rgb(21, 255, 40);
+    margin-right: 10px;
 }

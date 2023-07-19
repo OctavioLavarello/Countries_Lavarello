@@ -14,7 +14,7 @@ export default function Card (props) {
                 <div className={style.div2}>
                     <img className={style.img} src={image} alt={commonName}/>
                 </div>
-                <div className={style.div2}>
+                <div className={style.div3}>
                     <h3 className={style.h3}>{officialName}</h3> 
                     <h3 className={style.h3}>{commonName}</h3>
                     <h3 className={style.h3}>{continent}</h3>

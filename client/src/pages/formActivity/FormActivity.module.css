@@ -1,7 +1,22 @@
-
+.bigContainer{
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: space;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+}
+.h2{
+    color: #fcfdef;
+    text-decoration: double;
+    text-shadow: blue;
+}
 .form {
     width: 300px;
     margin: 0 auto;
+    color: #fcfdef;
 }
 
 .formGroup {

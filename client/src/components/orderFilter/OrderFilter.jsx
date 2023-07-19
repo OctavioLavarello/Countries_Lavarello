@@ -65,20 +65,20 @@ export default function OrderFilter () {
         <div className={style.container}>
             <div className={style.filter}>
                 <h4>ORDER</h4>
-                <label>Alphabetically</label>
+                <label>Alphabetically:</label>
                 <select className={style.select} onChange={handlerOrderAlph}>
                     <option value="A-Z" >A - Z</option>
                     <option value="Z-A" >Z - A</option>
                 </select>
-                <label>by Population</label>
+                <label>by Population:</label>
                 <select className={style.select} onChange={handlerOrderPopulation}>
                     <option value="major" >Major</option>
                     <option value="minor" >Minor</option>
                 </select>
-            <div/>
+            </div>
             <div className={style.filter}>
                 <h4>FILTER</h4>
-                <label>by Continent</label>
+                <label>by Continent:</label>
                 <select className={style.select} onChange={handleFilterContinent}>
                     {["Africa", "Antarctica", "Asia", "Europe", "North America", "Oceania", "South America"]
                     .map((continent) => (
@@ -88,7 +88,6 @@ export default function OrderFilter () {
                     >{continent}</option>)
                     )}
                 </select>
-                <h4></h4>
                 <label>by Activity</label>
                 <div>
                     <label>Name</label>
@@ -101,6 +100,8 @@ export default function OrderFilter () {
                                 >{activity.name}</option>)
                         )}
                     </select>
+                </div>
+                <div>
                     <label>Difficulty</label>
                     <select className={style.select} onChange={handlerCountry_Activity_Difficulty}>
                         {activitiesDifficulty.map(
@@ -111,6 +112,8 @@ export default function OrderFilter () {
                                 >{activity.difficulty}</option>)
                         )}
                     </select >
+                </div>
+                <div>
                     <label>Duration</label>
                     <select className={style.select} onChange={handlerCountry_Activity_Duration}>
                         {activitiesDuration.map(
@@ -121,6 +124,8 @@ export default function OrderFilter () {
                                 >{activity.duration}</option>)
                         )}
                     </select>
+                </div>
+                <div>
                     <label>Season</label>
                     <select className={style.select} onChange={handlerCountry_Activity_Season}>
                         {activitiesSeason.map(
@@ -133,7 +138,11 @@ export default function OrderFilter () {
                     </select>
                 </div>
             </div>
-                <button onClick={handlerReset}>Reset</button>
+            <div>
+                <button 
+                className={style.reset}
+                onClick={handlerReset}
+                >Reset</button>
             </div>
         </div>
     )

@@ -20,4 +20,6 @@ export const POST_ACTIVITY = "POST_ACTIVITY";
 export const GET_ALL_ACTIVITIES = "GET_ALL_ACTIVITIES"
 export const CLEAR_STATE = "CLEAR_STATE";
 export const ERROR = "ERROR" 
+export const ACCESS = "ACCESS"
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY"
 

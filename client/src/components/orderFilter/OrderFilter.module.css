@@ -18,6 +18,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-right: 10px;
 }
 .filter h4 {
     margin-bottom: 50px;
@@ -25,6 +26,37 @@
 .select{
     width: 60px;
     height: 20px;
+    color: #fcfdef;
+    background-color: #00193f;
+    border: 1px solid #fcfdef;
+    margin-left: 3px;
+    margin-right: 5px;
+}
+.select:hover{
+    width: 60px;
+    height: 20px;
+    color: #fcfdef;
+    background-color: #00193f;
+    border: 2px solid #bdbdbd;
+    margin-left: 10px;
+} 
+.reset{
+    background-color: #00193f;
+    border-color: #fcfdef;
+    border-radius: 0 99px 0 99px;
+    color: #fcfdef;
+    padding: 5px 15px;
+    transition: .5s, color .10s;
+        -webkit-transition: .5s, color .10s;
+        -moz-transition: .5s, color .10s;
+}
+.reset:hover{
+    background-color: #00193f;
+    border-color: #fcfdef;
+    box-shadow: 0 3px 3px 0 #fcfdef,0 3px 3px 0 #fcfdef;
+    transform: scale3d(1, 1, 0.3);
+        -webkit-transform: scale3d(1, 1, 0.3);
+        -moz-transform: scale3d(1, 1, 0.3);
 }
 
 
